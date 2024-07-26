@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=chain-adapters
+    ports:
+      - '5432:5432'
+    volumes:
+      - chain-adapters-db:/var/lib/postgresql/data
+volumes:
+  chain-adapters-db:
+    driver: local
