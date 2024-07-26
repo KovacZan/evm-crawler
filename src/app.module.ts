@@ -6,7 +6,6 @@ import configurations from "./config/configurations";
 import { EventEmitterModule } from "@nestjs/event-emitter";
 import { ListenerModule } from "./listeners/listener.module";
 import { BlockchainListenersModule } from "./blockchain/listeners/blockchain.listeners.module";
-import { CrawlerModule } from "./blockchain/crawler/crawler.module";
 
 @Module({
     imports: [
@@ -15,7 +14,6 @@ import { CrawlerModule } from "./blockchain/crawler/crawler.module";
         }),
         TypeOrmModule.forRoot({
             type: "postgres",
-            // TODO: find better way
             host: configurations().database.host,
             port: configurations().database.port,
             username: configurations().database.username,
@@ -26,7 +24,6 @@ import { CrawlerModule } from "./blockchain/crawler/crawler.module";
             synchronize: true,
         }),
         EventEmitterModule.forRoot(),
-        CrawlerModule,
         BlockchainListenersModule,
         ListenerModule,
     ],
